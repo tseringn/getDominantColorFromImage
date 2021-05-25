@@ -5,20 +5,23 @@ document.addEventListener('DOMContentLoaded',()=>{
   
     
 
-    document.addEventListener('click', e=>{
-        if(e.target.className == 'url-submit'){
+    document.addEventListener('keydown', e=>{
+        console.log(e.key)
+        if(e.key == 'Enter'){
             e.preventDefault()
-        // if(input>0){
-            console.log(imgDiv, input.value)
+        if(input.value.length>0){
             let img =document.createElement('img')
             img.src=input.value
-
-            
-            getDominantColor(img)
-            console.log('clicked!')
-        // }else{
-        //     window.alert('invalid input!')
-        // }
+            img.className ='img'
+            img.crossOrigin = 'anonymous';
+            img.onload=()=>{
+                imgDiv.innerHTML=''
+                imgDiv.appendChild(img)
+                getDominantColor(img)
+            }  
+        }else{
+            window.alert('invalid input!')
+        }
         }
         console.log(e.target)
     })
@@ -26,19 +29,17 @@ document.addEventListener('DOMContentLoaded',()=>{
     
 })
 
-const getDominantColor=(img)=>{
+const  getDominantColor=async (img)=>{
     let cs = document.createElement("canvas")
-    imgDiv.appendChild(cs)
     let ctx = cs.getContext('2d')
     ctx.drawImage(img, 0, 0)
-    console.log(cs.layerX)
+    console.log(cs)
     let imgData = ctx.getImageData(0,0,cs.width, cs.height) 
     let pxs = imgData.data
     let colors = {}
-    
     console.log(pxs)
     for(let i=0; i<pxs.length; i+=4){
-        let rgba =`${pxs[i]},${pxs[i+1]},${pxs[i+2]},${pxs[i+3]/255}`
+        let rgba =`${pxs[i]},${pxs[i+1]},${pxs[i+2]}`
         if(colors[rgba]){
             colors[rgba]=colors[rgba]+1
         }else{
@@ -46,13 +47,13 @@ const getDominantColor=(img)=>{
         }
     }
     let max =-1,
-    res='0,0,0,0'
+    res='0,0,0'
     for(let key in colors){
-        if(max<colors[key] && key !='0,0,0,0'){
+        if(max<colors[key] && key !='0,0,0'){
             res=key
             max = colors[key]
         }
     }
-    console.log(res,colors[res]);
-    document.body.style=`background: rgba(${res})`
+    console.log(res,colors)
+    img.style=`box-shadow: 20px 20px 60px 35px rgb(${res})`
 }

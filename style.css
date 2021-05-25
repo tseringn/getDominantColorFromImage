@@ -2,5 +2,41 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: whitesmoke;
+    flex-direction: column;
     
+}
+.img{
+    overflow: hidden;
+    min-width: 300px;
+    min-height: 300px;
+    max-height: 650px;
+    max-width: 650px;
+    object-fit:cover;
+    border-radius: 5px;
+    margin: 40px;
+}
+.url-input{
+    width: 600px;
+    height: 30px;
+    padding: 8px;
+    color: teal;
+    font-size: 22px;
+    border: none;
+    margin: 15px;
+}
+.url-input:focus{
+    outline: none;
+}
+.url-submit{
+    border: none;
+    height: 35px;
+    width: 350px;
+    background-color: teal;
+    font-size: 26px;
+    color: whitesmoke;
+}
+.url-submit:hover{
+    color: teal;
+    background-color: whitesmoke;
 }
