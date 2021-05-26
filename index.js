@@ -48,6 +48,8 @@ const  getDominantColor=async (img)=>{
             max = colors[key]
         }
     }
-    
-    img.style=`box-shadow: 20px 20px 60px 35px rgb(${res})`
+    console.log(res)
+    img.style=`box-shadow: 20px 20px 60px 30px rgba(${res})`
+    let gradient = (res.split(",").slice(0,3).join(",")+",.5")
+    document.body.style=`background: rgba(${gradient})`
 }

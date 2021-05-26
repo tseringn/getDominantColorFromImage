@@ -1,6 +1,5 @@
 body{
     display: flex;
-    justify-content: center;
     align-items: center;
     background-color: whitesmoke;
     flex-direction: column;
@@ -13,7 +12,7 @@ body{
     max-height: 650px;
     max-width: 650px;
     object-fit:cover;
-    margin: 40px;
+    margin: 55px;
 }
 .url-input{
     width: 600px;
@@ -22,7 +21,6 @@ body{
     color: teal;
     font-size: 22px;
     border: none;
-    margin: 15px;
 }
 .url-input:focus{
     outline: none;
