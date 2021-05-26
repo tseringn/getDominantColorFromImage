@@ -1,12 +1,7 @@
 let imgDiv = document.getElementsByClassName('image-container')[0]
 document.addEventListener('DOMContentLoaded',()=>{
     let input = document.getElementsByClassName('url-input')[0]
-    let submit = document.getElementsByClassName('url-submit')
-  
-    
-
     document.addEventListener('keydown', e=>{
-        console.log(e.key)
         if(e.key == 'Enter'){
             e.preventDefault()
         if(input.value.length>0){
@@ -23,7 +18,6 @@ document.addEventListener('DOMContentLoaded',()=>{
             window.alert('invalid input!')
         }
         }
-        console.log(e.target)
     })
 
     
@@ -33,11 +27,11 @@ const  getDominantColor=async (img)=>{
     let cs = document.createElement("canvas")
     let ctx = cs.getContext('2d')
     ctx.drawImage(img, 0, 0)
-    console.log(cs)
+    
     let imgData = ctx.getImageData(0,0,cs.width, cs.height) 
     let pxs = imgData.data
     let colors = {}
-    console.log(pxs)
+   
     for(let i=0; i<pxs.length; i+=4){
         let rgba =`${pxs[i]},${pxs[i+1]},${pxs[i+2]}`
         if(colors[rgba]){
@@ -54,6 +48,6 @@ const  getDominantColor=async (img)=>{
             max = colors[key]
         }
     }
-    console.log(res,colors)
+    
     img.style=`box-shadow: 20px 20px 60px 35px rgb(${res})`
 }
