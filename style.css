@@ -13,7 +13,6 @@ body{
     max-height: 650px;
     max-width: 650px;
     object-fit:cover;
-    border-radius: 5px;
     margin: 40px;
 }
 .url-input{

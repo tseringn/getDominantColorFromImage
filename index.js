@@ -49,7 +49,7 @@ const  getDominantColor=async (img)=>{
     let max =-1,
     res='0,0,0'
     for(let key in colors){
-        if(max<colors[key] && key !='0,0,0'){
+        if(max<colors[key] && (key !='0,0,0' || key!='255,255,255')){
             res=key
             max = colors[key]
         }
